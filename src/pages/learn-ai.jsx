@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import './learn-ai.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const LearnAI = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -19,6 +21,10 @@ const LearnAI = () => {
   const scrollerRef = useRef(null);
 
   const chars = '物語とは、一連の現実または想像上の出来事を、言葉、文章、画像、その他のコミュニケーション手段によって語られる物語または記述です。物語は、娯楽、情報伝達（ニュース記事など）、教訓の伝授、文化の保存など、様々な目的で用いられます。物語は短いもの（短編小説）から長いもの（小説など）まで様々で、書籍や映画など、様々な形式で発表されます。';
+
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
 
   // Matrix rain effect
   useEffect(() => {

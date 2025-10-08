@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import '../Assets/style.css';
 import HandsOnExperience from '../assets/Images/Hands-On.svg';
 import CompeteWithRest from '../assets/images/CompeteWithWorld.svg';
@@ -19,10 +19,13 @@ import Gamified from '../assets/images/Gamified.svg';
 import Robotics from '../assets/images/robotics.svg';
 import Cloud from '../assets/images/Cloud.svg';
 import Certificate from '../assets/images/Certificate.svg';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 import emailjs from '@emailjs/browser';
 const Home = () => {
+  // Geolocation state
   const [userLocation, setUserLocation] = useState(null);
   const [countryCode, setCountryCode] = useState("+91"); // Default India
   const [showForm, setShowForm] = useState(false);
@@ -34,6 +37,10 @@ const Home = () => {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 , once: false });
+  }, []);
 
   useEffect(() => {
     // Detect user location
@@ -86,10 +93,10 @@ const Home = () => {
       {/* Hero Section */}
       <section className="hero d-flex flex-column justify-content-around align-items-center text-center text-white">
         <div className="container">
-          <h1 className="display-4 fw-bold">
+          <h1 className="display-4 fw-bold" data-aos="fade-down">
             The most practical way to learn<br />technology On Earth!
           </h1>
-          <p className="mt-4 lead fw-normal text-light">
+          <p className="mt-4 lead fw-normal text-light" data-aos="fade-up">
             Technology Garage has brought the world's top most gadgets,
             methodologies, and mechanisms together to make a fun learning
             experience. Learning pathways are designed to introduce the
@@ -226,7 +233,7 @@ const Home = () => {
           </h2>
           <div className="row gx-4 gy-4 justify-content-center">
             {/* Card 1 */}
-            <div className="col-md-4">
+            <div className="col-md-4" data-aos="fade-up">
               <div className="tg-feature-box p-4 h-100 shadow-sm rounded">
                 <img
                   src={ExposureToTechnology}
@@ -241,7 +248,7 @@ const Home = () => {
               </div>
             </div>
             {/* Card 2 */}
-            <div className="col-md-4">
+            <div className="col-md-4" data-aos="fade-up" data-aos-delay="100">
               <div className="tg-feature-box p-4 h-100 shadow-sm rounded">
                 <img
                   src={HandsOnExperience}
@@ -256,7 +263,7 @@ const Home = () => {
               </div>
             </div>
             {/* Card 3 */}
-            <div className="col-md-4">
+            <div className="col-md-4" data-aos="fade-up" data-aos-delay="200">
               <div className="tg-feature-box p-4 h-100 shadow-sm rounded">
                 <img
                   src={CompeteWithRest}
@@ -271,7 +278,7 @@ const Home = () => {
               </div>
             </div>
             {/* Card 4 */}
-            <div className="col-md-4">
+            <div className="col-md-4" data-aos="fade-up" data-aos-delay="300">
               <div className="tg-feature-box p-4 h-100 shadow-sm rounded">
                 <img
                   src={ConvertYourCreativity}
@@ -286,7 +293,7 @@ const Home = () => {
               </div>
             </div>
             {/* Card 5 */}
-            <div className="col-md-4">
+            <div className="col-md-4" data-aos="fade-up" data-aos-delay="400">
               <div className="tg-feature-box p-4 h-100 shadow-sm rounded">
                 <img
                   src={BecomeALeader}
@@ -313,8 +320,8 @@ const Home = () => {
           </h2>
 
           {/* First Row */}
-          <div className="row g-4 justify-content-center align-items-center">
-            <div className="col-md-3 text-center">
+          <div className="row g-4 justify-content-center align-items-center" >
+            <div className="col-md-3 text-center" data-aos="fade-right">
               <img
                 src={DedicatedCoachs}
                 alt="Coach 1"
@@ -325,7 +332,7 @@ const Home = () => {
               </h6>
             </div>
 
-            <div className="col-md-1 text-center d-none d-md-block">
+            <div className="col-md-1 text-center d-none d-md-block" data-aos="fade-right">
               <img
                 src={arrow}
                 alt="Arrow"
@@ -333,7 +340,7 @@ const Home = () => {
               />
             </div>
 
-            <div className="col-md-3 text-center">
+            <div className="col-md-3 text-center" data-aos="fade-right" duration="100">
               <img
                 src={PersonalizedGuidance}
                 alt="Coach 2"
@@ -344,7 +351,7 @@ const Home = () => {
               </h6>
             </div>
 
-            <div className="col-md-1 text-center d-none d-md-block">
+            <div className="col-md-1 text-center d-none d-md-block" data-aos="fade-right" duration="100">
               <img
                 src={arrow}
                 alt="Arrow"
@@ -352,7 +359,7 @@ const Home = () => {
               />
             </div>
 
-            <div className="col-md-3 text-center">
+            <div className="col-md-3 text-center" data-aos="fade-right" duration="200">
               <img
                 src={BuildingYour}
                 alt="Coach 3"
@@ -365,7 +372,7 @@ const Home = () => {
           </div>
 
           {/* Second Row */}
-          <div className="row g-4 justify-content-center align-items-center mt-4">
+          <div className="row g-4 justify-content-center align-items-center mt-4" data-aos="fade-right">
             <div className="col-md-3 text-center">
               <img
                 src={OnGoingSupport}
@@ -377,7 +384,7 @@ const Home = () => {
               </h6>
             </div>
 
-            <div className="col-md-1 text-center d-none d-md-block">
+            <div className="col-md-1 text-center d-none d-md-block" data-aos="fade-right">
               <img
                 src={arrow}
                 alt="Arrow"
@@ -385,7 +392,7 @@ const Home = () => {
               />
             </div>
 
-            <div className="col-md-3 text-center">
+            <div className="col-md-3 text-center" data-aos="fade-right" duration="100">
               <img
                 src={TailoredLearn}
                 alt="Coach 5"
@@ -396,7 +403,7 @@ const Home = () => {
               </h6>
             </div>
 
-            <div className="col-md-1 text-center d-none d-md-block">
+            <div className="col-md-1 text-center d-none d-md-block" data-aos="fade-right" duration="100">
               <img
                 src={arrow}
                 alt="Arrow"
@@ -404,7 +411,7 @@ const Home = () => {
               />
             </div>
 
-            <div className="col-md-3 text-center">
+            <div className="col-md-3 text-center" data-aos="fade-right" duration="200">
               <img
                 src={ExportCoach}
                 alt="Coach 6"
@@ -428,7 +435,7 @@ const Home = () => {
 
       {/* One Stop Section */}
       <section className="one-stop-section">
-        <div className="content-wrapper">
+        <div className="content-wrapper" data-aos="fade-up">
           <div className="text-column">
             <h2>Your One – Stop Shop</h2>
             <p>
@@ -446,7 +453,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="bottom-caption">
+        <div className="bottom-caption" data-aos="fade-up">
           Technology Garage is your "one-stop shop" — a place where you can dive deep
           into hands-on experiences, enhance your tech skills, and explore everything
           from the basics to more advanced techniques, all in one convenient
@@ -462,7 +469,7 @@ const Home = () => {
         <div className="container">
           <div className="row g-4 justify-content-center">
             {/* Card 1 */}
-            <div className="col-md-6 col-lg-4">
+            <div className="col-md-6 col-lg-4" data-aos="fade-up">
               <div className="feature-card text-center p-4 h-100">
                 <img
                   src={Basics}
@@ -479,7 +486,7 @@ const Home = () => {
               </div>
             </div>
             {/* Card 2 */}
-            <div className="col-md-6 col-lg-4">
+            <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
               <div className="feature-card text-center p-4 h-100">
                 <img
                   src={Learn}
@@ -498,7 +505,7 @@ const Home = () => {
               </div>
             </div>
             {/* Card 3 */}
-            <div className="col-md-6 col-lg-4">
+            <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
               <div className="feature-card text-center p-4 h-100">
                 <img
                   src={Gamified}
@@ -515,7 +522,7 @@ const Home = () => {
               </div>
             </div>
             {/* Card 4 */}
-            <div className="col-md-6 col-lg-4">
+            <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
               <div className="feature-card text-center p-4 h-100">
                 <img
                   src={Robotics}
@@ -532,7 +539,7 @@ const Home = () => {
               </div>
             </div>
             {/* Card 5 */}
-            <div className="col-md-6 col-lg-4">
+            <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
               <div className="feature-card text-center p-4 h-100">
                 <img
                   src={Cloud}
@@ -549,7 +556,7 @@ const Home = () => {
               </div>
             </div>
             {/* Card 6 */}
-            <div className="col-md-6 col-lg-4">
+            <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
               <div className="feature-card text-center p-4 h-100">
                 <img
                   src={Certificate}
@@ -575,7 +582,7 @@ const Home = () => {
         <section className="contact-section py-5">
           <div className="container">
             <div className="row g-4 align-items-stretch">
-              <div className="col-12 col-md-6">
+              <div className="col-12 col-md-6" data-aos="fade-up">
                 <div className="p-4 bg-light h-100 shadow-sm rounded">
                   <h2 className="contact-title mb-4">CONTACT</h2>
                   <p>
@@ -599,7 +606,7 @@ const Home = () => {
                   </p>
                 </div>
               </div>
-              <div className="col-12 col-md-6">
+              <div className="col-12 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div
                   className="h-100 shadow-sm rounded overflow-hidden"
                   style={{ minHeight: "300px" }}
