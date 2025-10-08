@@ -1,15 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import './learn-ai.css';
 
 const LearnAI = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState(null);
+  // EmailJS form state (merge with existing popup state)
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
   const matrixRainRef = useRef(null);
   const matrixBoxRef = useRef(null);
   const cursorRef = useRef(null);
   const scrollerRef = useRef(null);
 
-  const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const chars = '物語とは、一連の現実または想像上の出来事を、言葉、文章、画像、その他のコミュニケーション手段によって語られる物語または記述です。物語は、娯楽、情報伝達（ニュース記事など）、教訓の伝授、文化の保存など、様々な目的で用いられます。物語は短いもの（短編小説）から長いもの（小説など）まで様々で、書籍や映画など、様々な形式で発表されます。';
 
   // Matrix rain effect
   useEffect(() => {
@@ -234,38 +243,92 @@ const LearnAI = () => {
               session.
             </p>
 
-            <form>
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setSending(true);
+                setError("");
+                setSent(false);
+                const templateParams = {
+                  name,
+                  phone: `${countryCode} ${phone}`,
+                  date,
+                  time
+                };
+                try {
+                  await emailjs.send(
+                    'service_ysj3pg5',
+                    'template_qyb0dyu',
+                    templateParams,
+                    'ij6SELAhRDbEP6rj0'
+                  );
+                  setSent(true);
+                  setName("");
+                  setPhone("");
+                  setDate("");
+                  setTime("");
+                } catch (err) {
+                  setError("Failed to send. Please try again.");
+                } finally {
+                  setSending(false);
+                }
+              }}
+            >
               <label>Enter Your Name</label>
-              <input type="text" placeholder="Enter Your Name" required />
+              <input
+                type="text"
+                placeholder="Enter Your Name"
+                required
+                value={name}
+                onChange={e => setName(e.target.value)}
+              />
 
               <label>Contact Number</label>
               <div className="phone-group">
                 <select
                   className="option-select2"
                   value={countryCode}
-                  onChange={(e) => setCountryCode(e.target.value)}
+                  onChange={e => setCountryCode(e.target.value)}
                 >
                   <option value="+91">IN +91</option>
                   <option value="+1">US +1</option>
                   <option value="+65">SG +65</option>
                 </select>
-                <input type="tel" placeholder="Enter Phone Number" required />
+                <input
+                  type="tel"
+                  placeholder="Enter Phone Number"
+                  required
+                  value={phone}
+                  onChange={e => setPhone(e.target.value)}
+                />
               </div>
 
               <div className="date-time-row">
                 <div>
                   <label>Select Date</label>
-                  <input type="date" required />
+                  <input
+                    type="date"
+                    required
+                    value={date}
+                    onChange={e => setDate(e.target.value)}
+                  />
                 </div>
                 <div>
                   <label>Select Time</label>
-                  <input type="time" required />
+                  <input
+                    type="time"
+                    required
+                    value={time}
+                    onChange={e => setTime(e.target.value)}
+                  />
                 </div>
               </div>
 
-              <button type="submit" className="submit-btn">
-                Submit
+              <button type="submit" className="submit-btn" disabled={sending}>
+                {sending ? "Sending..." : "Submit"}
               </button>
+              {sent && <div style={{color: 'green', marginTop: 10}}>Sent successfully!</div>}
+              {error && <div style={{color: 'red', marginTop: 10}}>{error}</div>}
             </form>
           </div>
         </div>
