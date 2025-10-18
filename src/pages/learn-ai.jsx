@@ -3,6 +3,23 @@ import emailjs from '@emailjs/browser';
 import './learn-ai.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { 
+  Target, 
+  Code2, 
+  Rocket, 
+  BookOpen, 
+  Brain, 
+  Network, 
+  Bot, // Changed from Robot to Bot
+  Users,
+  ArrowRight, 
+  FolderGit2, 
+  Clock, 
+  Star,
+  ChevronLeft,
+  ChevronRight,
+  Plus
+} from 'lucide-react';
 
 const LearnAI = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -143,6 +160,18 @@ const LearnAI = () => {
     {
       question: "Which AI model is famous for image recognition?",
       answer: "Convolutional Neural Networks (CNNs) are the backbone of modern image recognition."
+    },
+    {
+      question: "What is the difference between AI, ML, and Deep Learning?",
+      answer: "AI is the broader concept of machines being able to carry out tasks intelligently, ML is a subset focused on learning from data, and Deep Learning is a subset of ML using neural networks."
+    },
+    {
+      question: "How does GPT (Generative Pre-trained Transformer) work?",
+      answer: "GPT uses transformer architecture to process text data and generate human-like responses by predicting the next most likely word in a sequence."
+    },
+    {
+      question: "What are the ethical concerns in AI?",
+      answer: "Key concerns include bias in AI systems, privacy issues, job displacement, accountability, and the potential misuse of AI technology."
     }
   ];
 
@@ -205,23 +234,53 @@ const LearnAI = () => {
 
       {/* Hero Section */}
       <section className="hero-section">
+        <div className="hero-overlay"></div>
         <div className="hero-content">
-          <div className="hero-text">
-            <h1 className="hero-title">Learn AI,<br />Fast & Fun</h1>
+          <div className="hero-text" data-aos="fade-right">
+            <div className="hero-badges">
+              <span className="hero-badge">Industry-Led</span>
+              <span className="hero-badge">Hands-on Learning</span>
+            </div>
+            <h1 className="hero-title">
+              <span className="gradient-text">Learn AI,</span>
+              <br />
+              <span className="typing-text">Fast & Fun</span>
+            </h1>
             <p className="hero-paragraph">
-              Don't wait to start your AI adventure. Our courses are crafted to be engaging, practical, and effective. Dive
-              in and see how quickly you can master the skills of tomorrow.
+              Don't wait to start your AI adventure. Our courses are crafted to be engaging, 
+              practical, and effective. Dive in and see how quickly you can master the skills 
+              of tomorrow with our innovative learning approach.
             </p>
-            <a href="#" className="cta-button">
-              <span>Discover More</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
+            <div className="hero-cta-group">
+              <a href="#" className="cta-button primary">
+                <span>Start Learning</span>
+                <ArrowRight className="ms-2" size={16} />
+              </a>
+              <a href="#" className="cta-button secondary">
+                <span>View Curriculum</span>
+              </a>
+            </div>
+            <div className="hero-stats">
+              <div className="stat-item">
+                <span className="stat-number">4.9</span>
+                <span className="stat-label">Course Rating</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">1000+</span>
+                <span className="stat-label">Students</span>
+              </div>
+            </div>
           </div>
 
-          <div className="matrix-container" id="matrixBox" ref={matrixBoxRef}>
+          <div className="matrix-container glass-effect" id="matrixBox" ref={matrixBoxRef} data-aos="fade-left">
             <div className="matrix-rain" id="matrixRain" ref={matrixRainRef}></div>
+            <div className="floating-elements">
+              <div className="float-element python">Python</div>
+              <div className="float-element tensorflow">TensorFlow</div>
+              <div className="float-element pytorch">PyTorch</div>
+              <div className="float-element ml">ML</div>
+              <div className="float-element ai">AI</div>
+            </div>
           </div>
         </div>
       </section>
@@ -340,6 +399,173 @@ const LearnAI = () => {
         </div>
       )}
 
+      {/* Course Overview Section */}
+      <section className="course-overview py-5">
+        <div className="container">
+          <h2 className="text-center mb-4">Course Overview</h2>
+          <div className="row g-4">
+            <div className="col-md-4" data-aos="fade-up" data-aos-delay="100">
+              <div className="overview-card p-4 rounded shadow-sm">
+                <div className="card-icon mb-3">
+                  <Target size={32} />
+                </div>
+                <h3 className="h5">Fundamentals First</h3>
+                <p>Master the core concepts of AI, from basic algorithms to advanced neural networks.</p>
+              </div>
+            </div>
+            <div className="col-md-4" data-aos="fade-up" data-aos-delay="200">
+              <div className="overview-card p-4 rounded shadow-sm">
+                <div className="card-icon mb-3">
+                  <Code2 size={32} />
+                </div>
+                <h3 className="h5">Hands-on Practice</h3>
+                <p>Build real-world AI projects using popular frameworks like TensorFlow and PyTorch.</p>
+              </div>
+            </div>
+            <div className="col-md-4" data-aos="fade-up" data-aos-delay="300">
+              <div className="overview-card p-4 rounded shadow-sm">
+                <div className="card-icon mb-3">
+                  <Rocket size={32} />
+                </div>
+                <h3 className="h5">Industry Ready</h3>
+                <p>Learn best practices and tools used in the industry for AI development.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Learning Path Section */}
+      <section className="learning-path py-5 bg-light">
+        <div className="container">
+          <h2 className="text-center mb-4">Your Learning Path</h2>
+          <div className="path-timeline">
+            <div className="path-item" data-aos="fade-right">
+              <div className="path-content">
+                <h3><BookOpen className="path-icon" size={24} /> 1. AI Foundations</h3>
+                <p>Understanding basic concepts and terminology</p>
+                <ul>
+                  <li>Introduction to AI & ML</li>
+                  <li>Python Programming Basics</li>
+                  <li>Data Structures & Algorithms</li>
+                </ul>
+              </div>
+            </div>
+            <div className="path-item" data-aos="fade-left">
+              <div className="path-content">
+                <h3><Brain className="path-icon" size={24} /> 2. Machine Learning</h3>
+                <p>Core ML concepts and implementations</p>
+                <ul>
+                  <li>Supervised Learning</li>
+                  <li>Unsupervised Learning</li>
+                  <li>Model Evaluation</li>
+                </ul>
+              </div>
+            </div>
+            <div className="path-item" data-aos="fade-right">
+              <div className="path-content">
+                <h3><Network className="path-icon" size={24} /> 3. Deep Learning</h3>
+                <p>Advanced neural network architectures</p>
+                <ul>
+                  <li>Neural Networks</li>
+                  <li>CNN & RNN</li>
+                  <li>Transfer Learning</li>
+                </ul>
+              </div>
+            </div>
+            <div className="path-item" data-aos="fade-left">
+              <div className="path-content">
+                <h3><Bot className="path-icon" size={24} /> 4. Applied AI</h3>
+                <p>Real-world applications and projects</p>
+                <ul>
+                  <li>Computer Vision</li>
+                  <li>Natural Language Processing</li>
+                  <li>Deployment & MLOps</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Course Stats Section */}
+      <section className="course-stats py-5">
+        <div className="container">
+          <div className="row text-center g-4">
+            <div className="col-md-3" data-aos="zoom-in">
+              <div className="stat-card p-3">
+                <Users className="stat-icon mb-2" size={32} />
+                <h3 className="stat-number">150+</h3>
+                <p className="stat-label">Students Enrolled</p>
+              </div>
+            </div>
+            <div className="col-md-3" data-aos="zoom-in">
+              <div className="stat-card p-3">
+                <FolderGit2 className="stat-icon mb-2" size={32} />
+                <h3 className="stat-number">10+</h3>
+                <p className="stat-label">Projects Completed</p>
+              </div>
+            </div>
+            <div className="col-md-3" data-aos="zoom-in">
+              <div className="stat-card p-3">
+                <Clock className="stat-icon mb-2" size={32} />
+                <h3 className="stat-number">30+</h3>
+                <p className="stat-label">Hours of Content</p>
+              </div>
+            </div>
+            <div className="col-md-3" data-aos="zoom-in">
+              <div className="stat-card p-3">
+                <Star className="stat-icon mb-2" size={32} />
+                <h3 className="stat-number">4.8</h3>
+                <p className="stat-label">Average Rating</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="testimonials py-5 bg-light">
+        <div className="container">
+          <h2 className="text-center mb-4">What Our Students Say</h2>
+          <div className="row g-4">
+            <div className="col-md-4" data-aos="fade-up">
+              <div className="testimonial-card p-4 rounded shadow-sm">
+                <div className="testimonial-content">
+                  <p className="mb-3">"The course structure is well-designed and the hands-on projects really helped me understand AI concepts better."</p>
+                  <div className="testimonial-author">
+                    <h4 className="h6 mb-1">Prince</h4>
+                    <p className="small text">SJC - Trichy</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4" data-aos="fade-up" data-aos-delay="100">
+              <div className="testimonial-card p-4 rounded shadow-sm">
+                <div className="testimonial-content">
+                  <p className="mb-3">"I went from knowing nothing about AI to deploying my first machine learning model. The instructors are amazing!"</p>
+                  <div className="testimonial-author">
+                    <h4 className="h6 mb-1">Tamizh</h4>
+                    <p className="small text">KRTC - Trichy</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4" data-aos="fade-up" data-aos-delay="200">
+              <div className="testimonial-card p-4 rounded shadow-sm">
+                <div className="testimonial-content">
+                  <p className="mb-3">"The practical approach and industry-focused curriculum helped me transition into an AI role at my company."</p>
+                  <div className="testimonial-author">
+                    <h4 className="h6 mb-1">Priya</h4>
+                    <p className="small text">HCC - Trichy</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Scroller Section */}
       <section className="scroller-section">
         <h1 className="scroller-title">Explore Concepts</h1>
@@ -351,7 +577,7 @@ const LearnAI = () => {
             className="btn btn-secondary scroller-btn position-absolute start-0 top-50 translate-middle-y"
             style={{zIndex: 2}}
           >
-            <i className="bi bi-chevron-left"></i>
+            <ChevronLeft size={24} />
           </button>
           <div className="scroller" id="scroller" ref={scrollerRef} style={{overflowX: 'auto', scrollBehavior: 'smooth'}}>
             <ol className="mb-0">
@@ -483,78 +709,74 @@ const LearnAI = () => {
 
       {/* AI Knowledge Section */}
       <section className="ai-knowledge-section">
+        <div className="ai-knowledge-particles"></div>
         <div className="ai-container">
-          <div className="ai-header">
-            <h1>AI KNOWLEDGE CENTER</h1>
-            <p className="subtitle">Essential Artificial Intelligence Concepts Explained</p>
+          <div className="ai-header" data-aos="fade-up">
+            <div className="header-wrapper">
+              <h1>AI Knowledge Hub</h1>
+              <p className="subtitle">Explore the Foundations of Artificial Intelligence</p>
+            </div>
           </div>
 
-          <div className="ai-grid" id="ai-faq">
-            {/* Original FAQ items */}
+          <div className="ai-knowledge-grid">
             {faqData.map((faq, index) => (
-              <div key={index} className={`ai-card ${activeAccordion === index ? 'active' : ''}`}>
-                <button 
-                  className="ai-toggle"
-                  onClick={() => handleAccordionToggle(index)}
-                  aria-expanded={activeAccordion === index}
-                  aria-controls={`ai-c${index}`}
-                >
-                  <div className="ai-question">{faq.question}</div>
-                  <span className="ai-icon" aria-hidden="true">+</span>
-                </button>
-                <div 
-                  id={`ai-c${index}`}
-                  className="ai-panel"
-                  role="region"
-                  style={{
-                    height: activeAccordion === index ? 'auto' : '0',
-                    overflow: 'hidden',
-                    transition: 'height 0.3s ease'
-                  }}
-                >
-                  <div className="ai-inner">
-                    <p className="ai-answer">
-                      <strong>{faq.answer.split(' ').slice(0, 2).join(' ')}</strong> {faq.answer.split(' ').slice(2).join(' ')}
+              <div 
+                key={index}
+                className={`ai-card ${activeAccordion === index ? 'active' : ''}`}
+              >
+                <div className="ai-card-header" onClick={() => handleAccordionToggle(index)}>
+                  <div className="ai-card-icon">
+                    {index === 0 && <Brain size={32} className="icon-glow" />}
+                    {index === 1 && <Code2 size={32} className="icon-glow" />}
+                    {index === 2 && <Network size={32} className="icon-glow" />}
+                    {index === 3 && <Bot size={32} className="icon-glow" />}
+                    {index === 4 && <BookOpen size={32} className="icon-glow" />}
+                    {index === 5 && <Target size={32} className="icon-glow" />}
+                  </div>
+                  <div className="ai-card-title">
+                    <h3>{faq.question}</h3>
+                  </div>
+                  <div className="expand-icon">
+                    <ChevronRight 
+                      size={24} 
+                      className={activeAccordion === index ? 'rotate-90' : ''} 
+                      style={{ transition: 'transform 0.3s ease' }}
+                    />
+                  </div>
+                </div>
+                
+                <div className="ai-card-content">
+                  <div className="content-wrapper">
+                    <p>
+                      <span className="highlight">{faq.answer.split(' ').slice(0, 2).join(' ')}</span>
+                      {' '}{faq.answer.split(' ').slice(2).join(' ')}
                     </p>
+                    <div className="content-footer">
+                      <button className="learn-more-btn glass-effect">
+                        Learn More
+                        <ChevronRight size={16} />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
-            {faqData.map((faq, index) => (
-              <div key={index} className={`ai-card ${activeAccordion === index ? 'active' : ''}`}>
-                <button 
-                  className="ai-toggle"
-                  onClick={() => handleAccordionToggle(index)}
-                  aria-expanded={activeAccordion === index}
-                  aria-controls={`ai-c${index}`}
-                >
-                  <div className="ai-question">{faq.question}</div>
-                  <span className="ai-icon" aria-hidden="true">+</span>
-                </button>
-                <div 
-                  id={`ai-c${index}`}
-                  className="ai-panel"
-                  role="region"
-                  style={{
-                    height: activeAccordion === index ? 'auto' : '0',
-                    overflow: 'hidden',
-                    transition: 'height 0.3s ease'
-                  }}
-                >
-                  <div className="ai-inner">
-                    <p className="ai-answer">
-                      <strong>{faq.answer.split(' ').slice(0, 2).join(' ')}</strong> {faq.answer.split(' ').slice(2).join(' ')}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-            {/* Additional FAQ items to match original count */}
-            
+          </div>
+          
+          <div className="ai-knowledge-footer" data-aos="fade-up">
+            <div className="footer-content">
+              <h3>Ready to Dive Deeper?</h3>
+              <p>Join our comprehensive AI learning program and master the future of technology.</p>
+              <button className="cta-button glass-effect" style={{border: '2px solid #ffffff', fontSize: '16px'}}>
+                Start Learning
+                <ChevronRight size={20} />
+              </button>
+            </div>
           </div>
         </div>
       </section>
     </div>
+        
   );
 };
 

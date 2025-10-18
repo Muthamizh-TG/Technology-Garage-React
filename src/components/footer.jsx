@@ -95,7 +95,7 @@ const Footer = () => {
         <p className="mb-0 text-muted copyright">
           © Copyright 2025{" "}
           <strong>
-            <u>Technology Garage</u>
+            <u><a href="http://www.technology-garage.com" style={{ color: 'gray' }}>Technology Garage</a></u>
           </strong>
         </p>
       </footer>
